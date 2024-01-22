@@ -1,7 +1,7 @@
 /*
 v.0.0 - original clock - https://www.hackster.io/mircemk/esp8266-animated-clock-on-8x8-led-matrices-4867ae
 v.1.0 - extract data by Nicu FLORICA (niq_ro)
-v.1.a - added data on Serial Monitor, extract as in https://github.com/DIYDave/HTTP-DateTim library
+v.1.a - added data on Serial Monitor, extract as in https://github.com/DIYDave/HTTP-DateTime library
 v.1.b - added data on display
 v.1.c - test real DS18B20
 */
