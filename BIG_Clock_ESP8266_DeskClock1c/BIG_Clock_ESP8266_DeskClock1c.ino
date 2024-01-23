@@ -4,6 +4,8 @@ v.1.0 - extract data by Nicu FLORICA (niq_ro)
 v.1.a - added data on Serial Monitor, extract as in https://github.com/DIYDave/HTTP-DateTime library
 v.1.b - added data on display
 v.1.c - test real DS18B20
+v.1.c1 - small updates
+v.1.c2 - corrected date updates (for GMT+offset or GMT-offset) as in v.1.e version 
 */
 
 #include "Arduino.h"
@@ -44,6 +46,8 @@ float utcOffset = 2;                       // Zaman Dilimi
 
 int realDS = 1;  // no DS18B20 sensor -> 0, real sensor = 1
 float temperatureC;
+int h1, h0; // hour to print
+int h7, h3;
 
 void setup() 
 {
@@ -338,6 +342,142 @@ void getTime()
     }
   }
   client.stop();
+
+  long epoch1 = fmod(round(localEpoc + 3600 * utcOffset + 86400L), 86400L);
+  h3 = ((epoch1  % 86400L) / 3600) % 24;
+  Serial.print(h3); 
+  Serial.print(" -> ");
+  Serial.println(h0); 
+
+// In case of positive timezone offset 
+if (utcOffset > 0)
+{  
+ //   if (h3  > 23)
+    if (h3 < h0) 
+    {
+    zi++;
+    ziua++;
+    if (ziua > 7) ziua = 1;
+    }
+  
+    if (zi == 29)
+      if (luna == 2 && an % 4 !=0){   // Kein Schaltjahr = 28 Tage
+        luna = 3;
+        zi = 1;
+      }          
+    if (zi == 30)
+      if (luna == 2 && an % 4 ==0){   // Schaltjahr = 29 Tage
+        luna = 3;
+        zi = 1;
+      } 
+     if (zi == 31)
+      if (luna == 4 || luna == 6 || luna == 9 || luna == 11){   // 30 tage
+        luna++;
+        zi = 1;     
+      }
+     if (zi == 32)
+      if (luna == 1 || luna == 3 || luna == 5 || luna == 7 || luna == 8 || luna == 10){   // 31 tage
+        luna++;
+        zi = 1;   
+      }else 
+      {           
+        if (luna == 12){
+          luna = 1;
+          zi = 1; 
+          an++;
+        }                 
+      }
+  }
+  
+// In case of negative timezone offset 
+  if (utcOffset < 0)
+  {
+    zi--;
+    ziua--;
+    if (ziua < 1) ziua = 7;
+  }
+  if (zi < 1){
+    luna--;
+    if (luna < 1)
+    {
+      luna = 12;    
+      an--;           
+    }
+    
+      if (luna == 1)
+      {
+        zi = 31;
+      }
+      if (luna == 2)
+      {
+        if (an % 4 !=0) zi = 28;   //Kein Schaltjahr
+        if (an % 4 ==0) zi = 29;   // Schaltjahr
+      }
+      if (luna == 3)
+      {
+        zi = 31;
+      }
+      if (luna == 4)
+      {
+        zi = 30;
+      }
+      if (luna == 5)
+      {
+        zi = 31;
+      }
+      if (luna == 6)
+      {
+        zi = 30;
+      }
+      if (luna == 7)
+      {
+        zi = 31;
+      }
+      if (luna == 8)
+      {
+        zi = 31;
+      }
+      if (luna == 9)
+      {
+        zi = 30;
+      }
+      if (luna == 10)
+      {
+        zi = 31;
+      }
+      if (luna == 11)
+      {
+        zi = 30;
+      }
+      if (luna == 12)
+      {
+        zi = 31;
+      }
+  }  
+      Serial.print("Offfset = ");
+      Serial.print(utcOffset);
+      Serial.print(" -> ");
+      Serial.print(ziua1);
+      Serial.print(" (");  
+      Serial.print(ziua);
+      Serial.print("), ");      
+      Serial.print(zi/10);
+      Serial.print(zi%10);
+      Serial.print("-");
+      Serial.print(luna1);
+      Serial.print(" (");  
+      Serial.print(luna);
+      Serial.print(") - ");  
+      Serial.print(an);      
+      Serial.print(", ");
+      Serial.print(h3/10);
+      Serial.print(h3%10);
+      Serial.print(":");
+      Serial.print(m/10);
+      Serial.print(m%10);
+      Serial.print(":");
+      Serial.print(s/10);
+      Serial.println(s%10);   
 }
 
 // =======================================================================
