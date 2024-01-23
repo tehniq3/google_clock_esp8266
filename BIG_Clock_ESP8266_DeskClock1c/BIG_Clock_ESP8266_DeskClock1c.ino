@@ -309,13 +309,13 @@ void getTime()
       luna2 = line.substring(14, 17).toInt();
       zi = line.substring(11, 13).toInt();
       an = line.substring(18, 22).toInt();
-      h = line.substring(23, 25).toInt();
+      h0 = line.substring(23, 25).toInt();
       m = line.substring(26, 28).toInt();
       s = line.substring(29, 31).toInt();
       zitozi();
       lunatoluna();
       localMillisAtUpdate = millis();
-      localEpoc = (h * 60 * 60 + m * 60 + s);
+      localEpoc = (h0 * 60 * 60 + m * 60 + s);
       Serial.print(date);
       Serial.print(" -> ");
       Serial.print(ziua1);
@@ -331,8 +331,8 @@ void getTime()
       Serial.print(") - ");  
       Serial.print(an);      
       Serial.print(", ");
-      Serial.print(h/10);
-      Serial.print(h%10);
+      Serial.print(h0/10);
+      Serial.print(h0%10);
       Serial.print(":");
       Serial.print(m/10);
       Serial.print(m%10);
