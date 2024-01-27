@@ -39,9 +39,9 @@ String date;
 // =======================================================================
 // CHANGE YOUR CONFIG HERE:
 // =======================================================================
-const char* ssid     = "bbk2";// SSID WiFi Ağ Adı
-const char* password = "internet2";         // WiFi Şifresi
-float utcOffset = 2;                       // Zaman Dilimi
+const char* ssid     = "network_name";         // SSID WiFi Ağ Adı
+const char* password = "network_pass";         // WiFi Şifresi
+float utcOffset = 2;                            // Zaman Dilimi
 // =======================================================================
 
 int realDS = 1;  // no DS18B20 sensor -> 0, real sensor = 1
