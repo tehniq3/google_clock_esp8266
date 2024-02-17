@@ -42,8 +42,8 @@ String date;
 // =======================================================================
 // CHANGE YOUR CONFIG HERE:
 // =======================================================================
-const char* ssid     = "network_name";      // SSID WiFi name
-const char* password = "network_pass";      // WiFi password
+const char* ssid     = "bbk2";              // SSID WiFi nam
+const char* password = "internet2";         // WiFi password
 
 float utcOffset = 2;                        // Timezone offset (in hour)
 byte format1224 = 12;                       // 12/24,  12 -hour format or 24-hour format
@@ -152,7 +152,7 @@ void loop()
     char Buf[lenghdrc]; //    char Buf[8];
     derece.toCharArray(Buf,lenghdrc); // derece.toCharArray(Buf,8);   
     printStringWithShift(Buf,50); 
-    delay(4000);
+    delay(3000);
     String derece1;
     derece1 += " / ";
     derece1 += zi/10;
