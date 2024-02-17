@@ -1,6 +1,8 @@
 # google_clock_esp8266
 based on https://www.hackster.io/mircemk/esp8266-animated-clock-on-8x8-led-matrices-4867ae and used date from https://github.com/DIYDave/HTTP-DateTime library
 
+my article: https://nicuflorica.blogspot.com/2024/01/ceas-google-cu-data-si-termometru.html
+
 history:
 - v.0.0 - original clock - https://www.hackster.io/mircemk/esp8266-animated-clock-on-8x8-led-matrices-4867ae
 - v.1.0 - extract data by Nicu FLORICA (niq_ro)
