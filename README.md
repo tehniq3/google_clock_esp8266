@@ -20,4 +20,5 @@ history:
 - v.1.f - update info at every 10 minutes (0,10,20,30,40,50) + temperature stay a little
 - v.1.g - added name of the day and month (romainan and english language)
 - v.1.h - added automatic DST (summer/winter time) using info from https://www.timeanddate.com/time/change/germany and in special from https://www.instructables.com/WiFi-NodeMCU-ESP8266-Google-Clock/
+- v.1.i - added 2nd sensor (DS18B20) as at TwoPin_DS18B20.ino
 
