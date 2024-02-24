@@ -21,4 +21,6 @@ history:
 - v.1.g - added name of the day and month (romainan and english language)
 - v.1.h - added automatic DST (summer/winter time) using info from https://www.timeanddate.com/time/change/germany and in special from https://www.instructables.com/WiFi-NodeMCU-ESP8266-Google-Clock/
 - v.1.i - added 2nd sensor (DS18B20) as at TwoPin_DS18B20.ino
+- v.1.j - added WiFiManager with few custom parameters, as I found at https://randomnerdtutorials.com/wifimanager-with-esp8266-autoconnect-custom-parameter-and-manage-your-ssid-and-password/
+- v.1.k - added automatic adjusted for brightness as at https://nicuflorica.blogspot.com/2020/04/alta-versiune-de-ceas-animat-cu-date.html
 
